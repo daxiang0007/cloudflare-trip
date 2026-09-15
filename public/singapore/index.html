@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新加坡行程 · 象哥出行</title>
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --color-bg: #ffffff;
+      --color-surface: #f9fafb;
+      --color-border: #e5e7eb;
+      --color-text: #1f2937;
+      --color-text-secondary: #6b7280;
+      --color-accent: #2563eb;
+      --color-accent-light: #eff6ff;
+      --color-tag-tech: #dbeafe;
+      --color-tag-tech-text: #1e40af;
+      --color-tag-culture: #fef3c7;
+      --color-tag-culture-text: #92400e;
+      --color-tag-food: #ffe4e6;
+      --color-tag-food-text: #9f1239;
+      --color-tag-nature: #d1fae5;
+      --color-tag-nature-text: #065f46;
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 2rem;
+    }
+
+    header .route {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    header .route .arrow {
+      color: var(--color-accent);
+    }
+
+    header h1 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    header .subtitle {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+    }
+
+    .meta-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+    }
+
+    .meta-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .day-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .day-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .day-header h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .day-header .day-date {
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      margin-left: auto;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 1.75rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.5rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: var(--color-border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.25rem;
+      top: 0.75rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--color-accent);
+    }
+
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      transition: box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .card .time {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 0.125rem;
+    }
+
+    .card p {
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.375rem;
+      margin-top: 0.625rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+    }
+
+    .tag-tech { background: var(--color-tag-tech); color: var(--color-tag-tech-text); }
+    .tag-culture { background: var(--color-tag-culture); color: var(--color-tag-culture-text); }
+    .tag-food { background: var(--color-tag-food); color: var(--color-tag-food-text); }
+    .tag-nature { background: var(--color-tag-nature); color: var(--color-tag-nature-text); }
+
+    .card .tip {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--color-accent);
+      font-style: italic;
+    }
+
+    .night-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2rem 0;
+      font-size: 0.8125rem;
+      color: var(--color-text-secondary);
+    }
+
+    .night-divider::before,
+    .night-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .summary {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: var(--color-accent-light);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius);
+    }
+
+    .summary h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--color-accent);
+    }
+
+    .summary ul {
+      list-style: none;
+      font-size: 0.8125rem;
+      color: var(--color-text);
+    }
+
+    .summary ul li {
+      padding: 0.25rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .summary ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 1rem 1rem 3rem; }
+      header h1 { font-size: 1.5rem; }
+      .meta-bar { flex-wrap: wrap; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="route">
+        <span>广州 CAN</span>
+        <span class="arrow">✈</span>
+        <span>新加坡 SIN</span>
+      </div>
+      <h1>新加坡 · 人文与科技之旅</h1>
+      <p class="subtitle">两天一夜，从校园到未来城市</p>
+      <div class="meta-bar">
+        <span>2 天 1 晚</span>
+        <span>·</span>
+        <span>人文 + 科技</span>
+        <span>·</span>
+        <span>象哥专属</span>
+      </div>
+    </header>
+
+    <!-- DAY 1 -->
+    <section class="day-section">
+      <div class="day-header">
+        <div class="day-badge">D1</div>
+        <h2>校园探索 · 科技地标</h2>
+        <span class="day-date">第一天</span>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>抵达樟宜机场</h3>
+              <span class="time">09:00</span>
+            </div>
+            <p>广州直飞约 4 小时。入境后坐地铁 Green Line 前往 Kent Ridge 方向，车程约 45 分钟。</p>
+            <div class="tags">
+              <span class="tag tag-tech">樟宜机场本身就是科技景点</span>
+            </div>
+            <p class="tip">星耀樟宜的雨漩涡可以回程时逛</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>新加坡国立大学 NUS</h3>
+              <span class="time">10:30 – 13:00</span>
+            </div>
+            <p>亚洲顶尖学府，校园依 Kent Ridge 山势而建。重点逛 University Town（教育理念标杆）、School of Computing（亚洲 CS 重镇）、中央图书馆。校园内穿梭巴士免费搭乘。</p>
+            <div class="tags">
+              <span class="tag tag-culture">人文</span>
+              <span class="tag tag-tech">科技</span>
+            </div>
+            <p class="tip">午饭在 The Deck 或 Fine Food 食阁解决，体验本地学生餐</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>one-north 科技走廊</h3>
+              <span class="time">13:30 – 14:30</span>
+            </div>
+            <p>从 NUS 出发仅一站地铁。新加坡的"硅谷"——Fusionopolis（信息通信研发）和 Biopolis（生物医药）聚集于此，建筑本身就是未来感十足的科技地标。</p>
+            <div class="tags">
+              <span class="tag tag-tech">科技园区</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>ArtScience Museum 艺术科学博物馆</h3>
+              <span class="time">15:00 – 17:30</span>
+            </div>
+            <p>金沙酒店旁的莲花造型建筑。常设展 "Future World" 由 teamLab 打造——沉浸式数字艺术空间，科技与艺术的交汇点。人文与科技在这里融为一体。</p>
+            <div class="tags">
+              <span class="tag tag-tech">数字艺术</span>
+              <span class="tag tag-culture">人文</span>
+            </div>
+            <p class="tip">门票建议提前在官网买，现场排队可能较长</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>Marina Bay 滨海湾漫步 + 晚餐</h3>
+              <span class="time">18:00 – 19:30</span>
+            </div>
+            <p>从博物馆出来沿滨海湾步道散步，鱼尾狮、金沙天际线尽收眼底。在 Lau Pa Sat（老巴刹）吃沙爹、海南鸡饭，维多利亚时代铸铁建筑里的本地美食。</p>
+            <div class="tags">
+              <span class="tag tag-food">美食</span>
+              <span class="tag tag-culture">地标</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>Gardens by the Bay 超级树灯光秀</h3>
+              <span class="time">19:45 – 21:00</span>
+            </div>
+            <p>Supertree Grove 每晚 19:45 和 20:45 各一场灯光音乐秀（免费）。18 棵 25-50 米高的"超级树"是垂直花园+太阳能集热器+雨水收集系统的工程杰作。</p>
+            <div class="tags">
+              <span class="tag tag-tech">绿色科技</span>
+              <span class="tag tag-nature">自然</span>
+            </div>
+            <p class="tip">OCBC Skyway 空中步道（收费）视野更佳，建议 19:30 前上去占位</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="night-divider">入住休息</div>
+
+    <!-- DAY 2 -->
+    <section class="day-section">
+      <div class="day-header">
+        <div class="day-badge">D2</div>
+        <h2>城市人文 · 多元文化</h2>
+        <span class="day-date">第二天</span>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>新加坡国家博物馆</h3>
+              <span class="time">09:30 – 11:30</span>
+            </div>
+            <p>新加坡最古老的博物馆（1887 年），用多媒体沉浸式叙事讲述从殖民时代到建国的历程。"新加坡历史馆"是理解这个城市国家从无到有的最佳入口。</p>
+            <div class="tags">
+              <span class="tag tag-culture">历史</span>
+              <span class="tag tag-tech">多媒体展陈</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>Kampong Glam 甘榜格南</h3>
+              <span class="time">11:45 – 13:30</span>
+            </div>
+            <p>马来-阿拉伯文化街区，苏丹回教堂金色穹顶是标志。Haji Lane 是新加坡最窄的巷子，满墙涂鸦、独立店铺。在 Arab Street 吃一顿中东+马来融合餐。</p>
+            <div class="tags">
+              <span class="tag tag-culture">多元文化</span>
+              <span class="tag tag-food">美食</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>新加坡科学中心 Science Centre</h3>
+              <span class="time">14:00 – 16:00</span>
+            </div>
+            <p>超过 1000 个互动展品，涵盖物理、生态、人工智能、机器人。2024 年翻新后新增 AI 和可持续发展展区。旁边的 OMNI-Theatre 有 8K 数字天象厅。</p>
+            <div class="tags">
+              <span class="tag tag-tech">互动科技</span>
+              <span class="tag tag-tech">AI 展区</span>
+            </div>
+            <p class="tip">位于 Jurong East，地铁直达，从市区过去约 30 分钟</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>星耀樟宜 Jewel Changi Airport</h3>
+              <span class="time">17:00 – 19:00</span>
+            </div>
+            <p>登机前的科技压轴——40 米高的室内瀑布"雨漩涡"、星空花园的天悬桥和迷宫。整座建筑是 Moshe Safdie 的工程奇迹，自然与技术的极致融合。</p>
+            <div class="tags">
+              <span class="tag tag-tech">建筑工程</span>
+              <span class="tag tag-nature">室内花园</span>
+            </div>
+            <p class="tip">Rain Vortex 灯光秀每晚整点一场，值得等</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-top">
+              <h3>返程 · 新加坡 → 广州</h3>
+              <span class="time">20:00+</span>
+            </div>
+            <p>樟宜机场 T1-T4 均有晚班直飞广州的航班，飞行约 4 小时。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="summary">
+      <h3>行前备忘</h3>
+      <ul>
+        <li>签证：中国护照需提前办理新加坡签证（电子签，约 3 个工作日）</li>
+        <li>交通：买一张 EZ-Link 卡（类似羊城通），地铁公交通用</li>
+        <li>货币：新加坡元 SGD，大部分地方支持刷卡/Grab Pay</li>
+        <li>天气：全年 25-32°C，随身带伞应对阵雨</li>
+        <li>网络：推荐买当地 SIM 卡或提前开国际漫游，Google Maps 是刚需</li>
+        <li>住宿建议：Marina Bay / Bugis 一带，去哪都方便</li>
+      </ul>
+    </div>
+
+    <footer>
+      象哥出行 · 新加坡人文科技之旅 · Powered by Claude
+    </footer>
+
+  </div>
+</body>
+</html>
