@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>肇庆摩旅 1 Day</title>
+<meta name="description" content="广州花都出发，当天往返的肇庆摩托车一日游，广宁竹海与四会贞山两大山水地标。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-display: 'Fraunces', 'Songti SC', 'STSong', serif;
+    --font-body: 'IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SF Mono', 'Consolas', monospace;
+
+    --paper: #E9EEE7;
+    --surface: #FBFCF9;
+    --surface-2: #F1F5EE;
+    --border: #D7DECE;
+    --ink: #13241F;
+    --ink-soft: #54635A;
+    --ink-faint: #8B978D;
+
+    --accent: #0E7A67;
+    --accent-soft: #DCEEE9;
+    --gold: #A8761E;
+    --gold-soft: #F5E9D1;
+    --purple: #7E3AA0;
+    --purple-soft: #EEE0F5;
+    --blue: #1D5FA8;
+    --blue-soft: #DEEAF6;
+    --green: #217A46;
+    --green-soft: #E0EFE3;
+
+    --radius-s: 4px;
+    --radius-m: 10px;
+    --radius-l: 16px;
+    --shadow: 0 2px 14px rgba(19,36,31,0.07);
+
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0A1815;
+      --surface: #0F211C;
+      --surface-2: #132922;
+      --border: #223B33;
+      --ink: #E7EFE8;
+      --ink-soft: #9FB3A8;
+      --ink-faint: #6C8078;
+
+      --accent: #3ECDAD;
+      --accent-soft: #123B33;
+      --gold: #E7A93F;
+      --gold-soft: #2E2415;
+      --purple: #C583E0;
+      --purple-soft: #2B1E33;
+      --blue: #78B0E4;
+      --blue-soft: #16283A;
+      --green: #67CE90;
+      --green-soft: #123322;
+
+      --shadow: 0 2px 20px rgba(0,0,0,0.45);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0A1815;
+    --surface: #0F211C;
+    --surface-2: #132922;
+    --border: #223B33;
+    --ink: #E7EFE8;
+    --ink-soft: #9FB3A8;
+    --ink-faint: #6C8078;
+
+    --accent: #3ECDAD;
+    --accent-soft: #123B33;
+    --gold: #E7A93F;
+    --gold-soft: #2E2415;
+    --purple: #C583E0;
+    --purple-soft: #2B1E33;
+    --blue: #78B0E4;
+    --blue-soft: #16283A;
+    --green: #67CE90;
+    --green-soft: #123322;
+
+    --shadow: 0 2px 20px rgba(0,0,0,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { background: var(--paper); }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    padding-block: 3rem;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .ticket {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-inline: 1.25rem;
+  }
+
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- Boarding pass hero ---------- */
+
+  .boarding-pass {
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .bp-main {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem 2rem 1.75rem;
+  }
+
+  .bp-route {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+  }
+
+  .bp-route .code { color: var(--ink); font-weight: 600; }
+  .bp-route .arrow { color: var(--accent); }
+
+  .bp-main h1 {
+    font-size: clamp(2.1rem, 7vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+
+  .bp-main .subtitle {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.4rem;
+  }
+
+  .bp-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  .bp-meta strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .bp-meta .label {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+  }
+
+  .bp-stub {
+    width: 108px;
+    flex-shrink: 0;
+    border-left: 1px dashed var(--border);
+    background: var(--surface-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0 1.25rem;
+  }
+
+  .bp-stub .stub-label {
+    writing-mode: vertical-rl;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .bp-stub .barcode {
+    width: 58px;
+    height: 80px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--ink) 0px, var(--ink) 2px,
+      transparent 2px, transparent 5px
+    );
+    opacity: 0.55;
+  }
+
+  .egg-note {
+    margin-top: 1.25rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .egg-note .mark { color: var(--gold); font-weight: 600; }
+
+  /* ---------- Legend ---------- */
+
+  .legend {
+    margin-top: 1.75rem;
+  }
+
+  .legend .legend-caption {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.65rem;
+  }
+
+  .legend-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.55rem;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .chip .sw {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .chip b { font-weight: 600; }
+  .chip span.zh { font-family: var(--font-body); color: var(--ink-soft); }
+
+  .sw-road, .dot-road { background: var(--blue); }
+  .sw-safety, .dot-safety { background: var(--purple); }
+  .sw-food, .dot-food { background: var(--gold); }
+  .sw-nature, .dot-nature { background: var(--green); }
+
+  /* ---------- Day sections ---------- */
+
+  .day-section { margin-top: 2.75rem; }
+
+  .day-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .day-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .day-head .day-titles { min-width: 0; }
+
+  .day-head .eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.15rem;
+  }
+
+  .day-head h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .line {
+    list-style: none;
+    position: relative;
+    padding-left: 1.6rem;
+  }
+
+  .line::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .stop { position: relative; margin-bottom: 1.1rem; }
+  .stop:last-child { margin-bottom: 0; }
+
+  .stop .dot {
+    position: absolute;
+    left: -1.6rem;
+    top: 0.85rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--paper);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    border-radius: var(--radius-m);
+    padding: 1rem 1.2rem;
+  }
+
+  .card.road { border-left-color: var(--blue); }
+  .card.safety { border-left-color: var(--purple); }
+  .card.food { border-left-color: var(--gold); }
+  .card.nature { border-left-color: var(--green); }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .card h3 { font-size: 1rem; font-weight: 600; font-family: var(--font-body); }
+
+  .card .time {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+
+  .card p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    max-width: 42em;
+  }
+
+  .card .chips { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .card .chips .chip { font-size: 0.7rem; padding: 0.2rem 0.45rem; }
+
+  .card .tip {
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-style: italic;
+  }
+
+  .highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+  }
+
+  /* ---------- Practical info stub ---------- */
+
+  .stub-card {
+    position: relative;
+    margin-top: 3rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: 1.75rem 1.75rem 1.5rem;
+  }
+
+  .stub-card::before {
+    content: '';
+    position: absolute;
+    top: -9px; left: -9px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--paper);
+  }
+  .stub-card::after {
+    content: '';
+    position: absolute;
+    top: -9px; right: -9px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .stub-card .perf {
+    position: absolute;
+    top: 0; left: 14px; right: 14px;
+    height: 0;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stub-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-top: 0.4rem;
+  }
+
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+
+  .checklist li {
+    display: flex;
+    gap: 0.7rem;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+
+  .checklist .k {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+    width: 3.2em;
+  }
+
+  .checklist .v { color: var(--ink-soft); }
+  .checklist .v b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+
+  footer.ticket-foot {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  footer.ticket-foot .brand {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+  }
+
+  footer.ticket-foot .foot-barcode {
+    width: 90px;
+    height: 18px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--ink-faint) 0px, var(--ink-faint) 1px,
+      transparent 1px, transparent 3px
+    );
+    opacity: 0.5;
+  }
+
+  @media (max-width: 620px) {
+    body { padding-block: 1.75rem; }
+    .boarding-pass { flex-direction: column; }
+    .bp-stub {
+      width: auto;
+      flex-direction: row;
+      border-left: none;
+      border-top: 1px dashed var(--border);
+      padding: 1rem 1.5rem;
+      justify-content: space-between;
+    }
+    .bp-stub .stub-label { writing-mode: horizontal-tb; }
+    .bp-stub .barcode { width: 80px; height: 32px; }
+    .bp-main { padding: 1.6rem 1.5rem 1.4rem; }
+    .bp-main h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="ticket">
+
+    <header class="boarding-pass">
+      <div class="bp-main">
+        <div class="bp-route">
+          <span class="code">HD 花都</span>
+          <span class="arrow">→</span>
+          <span class="code">ZQ 肇庆</span>
+        </div>
+        <h1>肇庆摩旅 1 Day</h1>
+        <p class="subtitle">竹海 × 溪山 —— 从花都山脚到广宁云顶</p>
+        <div class="bp-meta">
+          <div>
+            <span class="label">Duration</span>
+            <strong>1 Day · 07:00–22:00</strong>
+          </div>
+          <div>
+            <span class="label">Distance</span>
+            <strong>全程 ≈ 290 km 环线</strong>
+          </div>
+          <div>
+            <span class="label">Terrain</span>
+            <strong>山路弯道 · 中等强度</strong>
+          </div>
+          <div>
+            <span class="label">For</span>
+            <strong>象哥专属</strong>
+          </div>
+        </div>
+        <p class="egg-note"><span class="mark">◆ 骑行看点</span> —— 全程贯穿广宁百里竹海观光道与四会贞山溪谷，山路弯道密集，请结伴慢骑、量力而行。</p>
+      </div>
+      <div class="bp-stub">
+        <span class="stub-label">Ride Pass</span>
+        <div class="barcode" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <nav class="legend" aria-label="行程分类图例">
+      <p class="legend-caption">按四种体验编码本行程</p>
+      <div class="legend-row">
+        <span class="chip"><span class="sw sw-nature"></span><b>MT</b><span class="zh">山水</span></span>
+        <span class="chip"><span class="sw sw-food"></span><b>FD</b><span class="zh">美食</span></span>
+        <span class="chip"><span class="sw sw-road"></span><b>RD</b><span class="zh">路况 / 骑行</span></span>
+        <span class="chip"><span class="sw sw-safety"></span><b>SF</b><span class="zh">安全 / 补给</span></span>
+      </div>
+    </nav>
+
+    <main>
+
+      <section class="day-section">
+        <div class="day-head">
+          <div class="day-badge mono">1D</div>
+          <div class="day-titles">
+            <span class="eyebrow">One Day · Loop Ride</span>
+            <h2>花都 → 四会 → 广宁 → 花都</h2>
+          </div>
+        </div>
+
+        <ol class="line">
+
+          <li class="stop">
+            <span class="dot" style="background:var(--ink-faint)"></span>
+            <div class="card">
+              <div class="card-top">
+                <h3>花都集结出发</h3>
+                <span class="time mono">07:00</span>
+              </div>
+              <p>检查胎压、油量、链条与装备，确认队形与对讲频道，结伴出发。</p>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-road"></span>
+            <div class="card road">
+              <div class="card-top">
+                <h3>骑行赴四会</h3>
+                <span class="time mono">07:00–09:00</span>
+              </div>
+              <p>约 95km，高速加省道为主，中途服务区休整约 10 分钟，补水。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-road"></span><b>RD</b></span>
+              </div>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-nature"></span>
+            <div class="card nature">
+              <div class="card-top">
+                <h3>四会 · 贞山风景区</h3>
+                <span class="time mono">09:00–11:00</span>
+              </div>
+              <p>以奇峰、溪流与森林步道见长，沿溪步道走一圈核心景段即可，拍照、透气，为下一站预留时间。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-nature"></span><b>MT</b></span>
+              </div>
+              <p class="tip">→ 山泉清澈，夏日尤其消暑</p>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-road"></span>
+            <div class="card road">
+              <div class="card-top">
+                <h3>转场广宁</h3>
+                <span class="time mono">11:00–11:40</span>
+              </div>
+              <p>约 45km 山路县道，弯道密集，减速慢行，保持车距，注意对向来车与落石路段。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-road"></span><b>RD</b></span>
+                <span class="chip"><span class="sw sw-safety"></span><b>SF</b></span>
+              </div>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-food"></span>
+            <div class="card food">
+              <div class="card-top">
+                <h3>广宁午餐</h3>
+                <span class="time mono">11:40–12:40</span>
+              </div>
+              <p>当地农家菜：笋干扣肉、走地鸡、山坑螺，为下午体力补给。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-food"></span><b>FD</b></span>
+              </div>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-nature"></span>
+            <div class="card nature">
+              <div class="card-top">
+                <h3>广宁 · 竹海大观公园</h3>
+                <span class="time mono">12:40–15:00</span>
+              </div>
+              <p>号称"中国十大竹海"之一，沿山脊观光道慢骑穿林，登观景台俯瞰云雾竹浪，今日重头戏。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-nature"></span><b>MT</b></span>
+              </div>
+              <span class="highlight">◆ 今日重头戏</span>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-safety"></span>
+            <div class="card safety">
+              <div class="card-top">
+                <h3>加油补给、检查车况</h3>
+                <span class="time mono">15:00–15:30</span>
+              </div>
+              <p>山区加油站少，务必加满；顺带检查胎压与刹车。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-safety"></span><b>SF</b></span>
+              </div>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-road"></span>
+            <div class="card road">
+              <div class="card-top">
+                <h3>返程回花都</h3>
+                <span class="time mono">15:30–18:00</span>
+              </div>
+              <p>约 150km，以高速为主，尽量在 17:30 前驶离山区路段，避免天黑走山路。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-road"></span><b>RD</b></span>
+                <span class="chip"><span class="sw sw-safety"></span><b>SF</b></span>
+              </div>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot dot-food"></span>
+            <div class="card food">
+              <div class="card-top">
+                <h3>花都本地晚餐、复盘</h3>
+                <span class="time mono">18:00–19:30</span>
+              </div>
+              <p>卸装、简单车辆清洁，聊聊今天的路况与照片。</p>
+              <div class="chips">
+                <span class="chip"><span class="sw sw-food"></span><b>FD</b></span>
+              </div>
+            </div>
+          </li>
+
+          <li class="stop">
+            <span class="dot" style="background:var(--ink-faint)"></span>
+            <div class="card">
+              <div class="card-top">
+                <h3>弹性缓冲，最晚到家</h3>
+                <span class="time mono">19:30–22:00</span>
+              </div>
+              <p>预留给突发状况（爆胎、堵车、临时休整）的安全冗余时间。</p>
+            </div>
+          </li>
+
+        </ol>
+      </section>
+
+    </main>
+
+    <section class="stub-card">
+      <div class="perf" aria-hidden="true"></div>
+      <h3>行前备忘</h3>
+      <ul class="checklist">
+        <li><span class="k">装备</span><span class="v">全盔、骑行服（护肩护肘护脊）、护膝手套、防滑靴，<b>雨衣雨裤随车携带</b>。</span></li>
+        <li><span class="k">路线</span><span class="v">花都 → 四会 → 广宁 → 花都环线，全程约 <b>290km</b>，山路占比高、弯道密集。</span></li>
+        <li><span class="k">加油</span><span class="v">山区加油站少，<b>出发前及广宁段务必加满</b>，备好加油卡或现金。</span></li>
+        <li><span class="k">天气</span><span class="v">雷雨天气避免继续山路骑行，<b>出发前核实天气预警</b>。</span></li>
+        <li><span class="k">时限</span><span class="v">建议 <b>17:30 前驶离山区路段</b>，夜间山路照明差。</span></li>
+        <li><span class="k">节奏</span><span class="v">每 1.5–2 小时停靠休息补水，<b>新手建议由熟悉路线的车友带队</b>。</span></li>
+      </ul>
+    </section>
+
+    <footer class="ticket-foot">
+      <span class="brand">象哥出行 · ZQ-1DAY · 摩旅山水一日游</span>
+      <div class="foot-barcode" aria-hidden="true"></div>
+    </footer>
+
+  </div>
+</body>
+</html>
